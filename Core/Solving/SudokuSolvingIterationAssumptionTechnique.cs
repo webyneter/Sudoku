@@ -268,7 +268,7 @@ namespace Webyneter.Sudoku.Core.Solving
             if (!minCandidatesCellPos.HasValue)
             {
                 // TODO: optimize: lookup that kind of cell repetitively when its number of candidates changes (decreases): compare against the minimum value from a variable (where to put it?)
-                minCandidatesCellPos = FindCellWithMinimumCandidates(Grid).Position;// TODO: rename with FIRST
+                minCandidatesCellPos = FindFirstCellWithMinimumCandidates(Grid).Position;
             }
             var minCandidatesCell = Grid.Cells[minCandidatesCellPos.Value.Y, minCandidatesCellPos.Value.X];
             
@@ -335,7 +335,7 @@ namespace Webyneter.Sudoku.Core.Solving
             return null;
         }
         
-        private SudokuGridCell FindCellWithMinimumCandidates(SudokuGrid grid)
+        private SudokuGridCell FindFirstCellWithMinimumCandidates(SudokuGrid grid)
         {
             byte minCandidates = grid.Metrics.MaximumNumber;   
             SudokuGridCell minCandidatesCell = null;
