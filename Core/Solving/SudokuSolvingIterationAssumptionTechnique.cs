@@ -90,7 +90,6 @@ namespace Webyneter.Sudoku.Core.Solving
         // TODO: protected override List<SudokuGridCell[,]> SearchSolutions()
         protected override bool SearchSolutionDebug()
         {
-            // TODO: call Reset() instead
             forbiddenCandidates.Clear();
             Grid.IterateLinesXY((x, y) =>
             {
@@ -107,7 +106,7 @@ namespace Webyneter.Sudoku.Core.Solving
                 return false;
             }
             Grid.Cells = resultCells;
-            // TODO: call Reset() when the solution process is finished
+            Reset();
             return true;
         }
 
@@ -203,15 +202,6 @@ namespace Webyneter.Sudoku.Core.Solving
             forbiddenCandidates.Clear();
 
             emptyCellsCount = Grid.Metrics.CellsTotal;
-
-            Grid.IterateLinesXY((x, y) =>
-            {
-                SudokuGridCell cell = Grid.Cells[y, x];
-                if (cell.IsClue)
-                {
-                    RegisterCellAsClue(cell);
-                }
-            });
         }
 
 
