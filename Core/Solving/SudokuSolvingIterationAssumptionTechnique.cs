@@ -69,6 +69,7 @@ namespace Webyneter.Sudoku.Core.Solving
 
         
         // TODO: implement the remaining functionality to find all possible solutions
+        // TODO: translate in English
         // јлгоритм: последовательный проход по клеткам слева направо и вниз
         // и усечение мн-ва вариантов цифр, 
         // которые могут находитьс€ в данной клетке; единственный
