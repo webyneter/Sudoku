@@ -1,0 +1,3 @@
+# Sudoku
+
+Sudoku Tournament Platform
