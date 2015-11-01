@@ -17,44 +17,7 @@ namespace Webyneter.Sudoku.Core.Solving
         
         private SudokuGridPosition currCheckingPos;
         private SudokuGridPosition? lastFilledPos;
-
-
-        #region debug
-        
-        private static ushort DEBUG_emptyCellsCountMin
-        {
-            get { return _DEBUG_emptyCellsCountMin; }
-            set
-            {
-                _DEBUG_emptyCellsCountMin = value;
-                if (value == 2)
-                {
-                    //Debugger.Break();
-                }
-            }
-        }
-        private static ushort _DEBUG_emptyCellsCountMin = ushort.MaxValue;
-
-        private ushort emptyCellsCount
-        {
-            get
-            {
-                return DEBUG_emptyCellsCount;
-            }
-            set
-            {
-                DEBUG_emptyCellsCount = value;
-                if (value < DEBUG_emptyCellsCountMin)
-                {
-                    DEBUG_emptyCellsCountMin = value;
-                }
-            }
-        }
-        private ushort DEBUG_emptyCellsCount;
-
-        #endregion
-
-        
+        private ushort emptyCellsCount;
         // WI: consider changing types to Set<byte> (benefit from sorting is about to emerge on large-scale grids which are rarely expected to be the case)
         // TODO: optimize the use of so many arrays of sorted sets (tremendous memory/perfomance drawbacks on large desks expected)
         private readonly SortedSet<byte>[] rowsOfNumbers;

@@ -103,7 +103,6 @@ namespace Webyneter.Sudoku.Core.Conversion
         public static byte[] ToBinary(SudokuGrid grid, SudokuConvertionAlgorithm algorithm)
         {
             var sb = new StringBuilder(grid.Metrics.CellsTotal);
-            // BUG: check if there is no bug with x/x indexing
             grid.IterateLinesXY((x, y) => sb.Append(grid.Cells[y, x].Number));
             return ToBinary(sb.ToString(), algorithm, grid.Constraints, grid.Metrics);
         }
