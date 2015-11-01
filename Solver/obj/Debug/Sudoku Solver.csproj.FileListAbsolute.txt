@@ -1,0 +1,10 @@
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Traditional_Sudoku_Solver.Properties.Resources.resources
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Sudoku Solver.csproj.GenerateResource.Cache
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\bin\Debug\Sudoku Solver.exe.config
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\bin\Debug\Sudoku Solver.exe
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\bin\Debug\Sudoku Solver.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\bin\Debug\Sudoku Commons.dll
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\bin\Debug\Sudoku Commons.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Sudoku Solver.csprojResolveAssemblyReference.cache
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Sudoku Solver.exe
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Sudoku Solver.pdb

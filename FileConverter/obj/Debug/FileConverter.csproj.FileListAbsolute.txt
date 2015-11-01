@@ -1,0 +1,20 @@
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\FileConverter.exe.config
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\FileConverter.exe
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\FileConverter.pdb
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\Core.dll
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\Miscellaneous.dll
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\Miscellaneous.pdb
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\bin\Debug\Core.pdb
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\obj\Debug\FileConverter.csprojResolveAssemblyReference.cache
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\obj\Debug\FileConverter.exe
+D:\Программирование\Проекты\Sudoku\Sudoku Files Converter\obj\Debug\FileConverter.pdb
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\FileConverter.exe.config
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\FileConverter.exe
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\FileConverter.pdb
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\Core.dll
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\Miscellaneous.dll
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\Miscellaneous.pdb
+D:\Программирование\Проекты\Sudoku\FileConverter\bin\Debug\Core.pdb
+D:\Программирование\Проекты\Sudoku\FileConverter\obj\Debug\FileConverter.csprojResolveAssemblyReference.cache
+D:\Программирование\Проекты\Sudoku\FileConverter\obj\Debug\FileConverter.exe
+D:\Программирование\Проекты\Sudoku\FileConverter\obj\Debug\FileConverter.pdb

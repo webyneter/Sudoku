@@ -1,0 +1,8 @@
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\bin\Release\Sudoku Files Converter.exe.config
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\bin\Release\Sudoku Files Converter.exe
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\bin\Release\Sudoku Files Converter.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\bin\Release\Sudoku Commons.dll
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\bin\Release\Sudoku Commons.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\obj\Release\Sudoku Files Converter.csprojResolveAssemblyReference.cache
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\obj\Release\Sudoku Files Converter.exe
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Files Converter\obj\Release\Sudoku Files Converter.pdb

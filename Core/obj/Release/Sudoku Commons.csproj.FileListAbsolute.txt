@@ -1,0 +1,5 @@
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\bin\Release\Sudoku Commons.dll
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\bin\Release\Sudoku Commons.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\obj\Release\Sudoku Commons.dll
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\obj\Release\Sudoku Commons.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\obj\Release\Sudoku Commons.csprojResolveAssemblyReference.cache

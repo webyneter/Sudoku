@@ -1,0 +1,4 @@
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\bin\Debug\Sudoku Commons.dll
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\bin\Debug\Sudoku Commons.pdb
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\obj\Debug\Sudoku Commons.dll
+D:\Программирование\Проекты\Sudoku\CUI\Sudoku Commons\obj\Debug\Sudoku Commons.pdb
