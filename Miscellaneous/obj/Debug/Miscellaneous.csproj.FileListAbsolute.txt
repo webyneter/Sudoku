@@ -1,5 +1,0 @@
-D:\Программирование\Проекты\Sudoku\Miscellaneous\bin\Debug\Miscellaneous.dll
-D:\Программирование\Проекты\Sudoku\Miscellaneous\bin\Debug\Miscellaneous.pdb
-D:\Программирование\Проекты\Sudoku\Miscellaneous\obj\Debug\Miscellaneous.csprojResolveAssemblyReference.cache
-D:\Программирование\Проекты\Sudoku\Miscellaneous\obj\Debug\Miscellaneous.dll
-D:\Программирование\Проекты\Sudoku\Miscellaneous\obj\Debug\Miscellaneous.pdb

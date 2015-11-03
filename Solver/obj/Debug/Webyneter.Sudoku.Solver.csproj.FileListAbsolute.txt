@@ -1,2 +1,0 @@
-D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Webyneter.Sudoku.Solver.Properties.Resources.resources
-D:\Программирование\Проекты\Sudoku\CUI\Sudoku Solver\obj\Debug\Webyneter.Sudoku.Solver.csproj.GenerateResource.Cache

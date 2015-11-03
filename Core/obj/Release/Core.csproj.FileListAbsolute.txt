@@ -1,5 +1,0 @@
-D:\Программирование\Проекты\Sudoku\Sudoku Commons\obj\Release\Core.csprojResolveAssemblyReference.cache
-D:\Программирование\Проекты\Sudoku\Sudoku Commons\bin\Release\Core.dll
-D:\Программирование\Проекты\Sudoku\Sudoku Commons\bin\Release\Core.pdb
-D:\Программирование\Проекты\Sudoku\Sudoku Commons\obj\Release\Core.dll
-D:\Программирование\Проекты\Sudoku\Sudoku Commons\obj\Release\Core.pdb
