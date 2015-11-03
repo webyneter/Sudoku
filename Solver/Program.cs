@@ -9,7 +9,6 @@ using Webyneter.Sudoku.Core.Miscs;
 using Webyneter.Sudoku.Core.Solving;
 using Webyneter.Sudoku.Miscellaneous.CUI;
 
-
 namespace Webyneter.Sudoku.Solver
 {
     internal static class Program
