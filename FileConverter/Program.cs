@@ -10,40 +10,34 @@ namespace Webyneter.Sudoku.FileConverter
 {
     internal static class Program
     {
-        private static string EXT_SOURCE = "txt";
-        private static string EXT_CONVERTED = SudokuGridFile.Extension;
+        private static readonly string SOURCE_EXT = "txt";
+        private static readonly string CONVERTED_EXT = SudokuGridFile.Extension;
 
-        private static string ABS_WORK_DIR = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
+        private static readonly string WORK_ABS_DIR = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
 
         private static string SOURCES_ABS_DIR;
         private static string OUTPUT_ABS_DIR;
-
-
+        
         private static void Main()
         {
-            Console.WriteLine(ConsoleTextBlocks.ShowWelcome(
-                "Welcome to Sudoku Initials Converter!") + "\n");
-
-
             Console.CursorVisible = true;
 
-
-            string dir = ConsoleInteractions.RequireChild(ABS_WORK_DIR,
+            Console.WriteLine(ConsoleTextBlocks.ShowWelcome("Welcome to Sudoku Grid Files Converter!"));
+            Console.WriteLine();
+            
+            string dir = ConsoleInteractions.RequireChild(WORK_ABS_DIR,
                 "Sources directory",
                 ConsoleTextMessages.DirectoryNotFound,
                 null,
                 Console.In,
                 Console.Out);
-            SOURCES_ABS_DIR = ABS_WORK_DIR + dir + Path.DirectorySeparatorChar;
+            SOURCES_ABS_DIR = WORK_ABS_DIR + dir + Path.DirectorySeparatorChar;
             OUTPUT_ABS_DIR = SOURCES_ABS_DIR;
-
-
+            
             Console.WriteLine("\n" + ConsoleTextBlocks.ShowCharsToLineEnd(Console.CursorLeft));
-
-
-            for (; ; )
+            
+            while(true)
             {
-
                 string[] modes = Enum.GetNames(typeof(SudokuConvertionMode));
                 FileStream selectedFile;
                 string outputFilePath;
@@ -54,49 +48,42 @@ namespace Webyneter.Sudoku.FileConverter
                 switch (selectedMode)
                 {
                     case SudokuConvertionMode.Encoding:
-
                         selectedFile = ConsoleInteractions.ShowListAndSelectItem(SOURCES_ABS_DIR,
-                            EXT_SOURCE,
+                            SOURCE_EXT,
                             Console.In,
                             Console.Out);
-
                         outputFilePath = OUTPUT_ABS_DIR +
-                            Path.GetFileNameWithoutExtension(OUTPUT_ABS_DIR + selectedFile.Name) + "." + EXT_CONVERTED;
-
-
+                            Path.GetFileNameWithoutExtension(OUTPUT_ABS_DIR + selectedFile.Name) + "." + CONVERTED_EXT;
                         using (SudokuGridFile.CreateBinaryFromText(selectedFile,
-                            outputFilePath,
-                            SudokuConvertionAlgorithm.NonUniform))
+                                                                   outputFilePath,
+                                                                   SudokuConvertionAlgorithm.NonUniform))
+                        {
                             selectedFile.Dispose();
-
+                        }
                         break;
-
 
                     case SudokuConvertionMode.Decoding:
-
                         selectedFile = ConsoleInteractions.ShowListAndSelectItem(SOURCES_ABS_DIR,
-                            EXT_CONVERTED,
+                            CONVERTED_EXT,
                             Console.In,
                             Console.Out);
-
                         outputFilePath = OUTPUT_ABS_DIR +
-                            Path.GetFileNameWithoutExtension(OUTPUT_ABS_DIR + selectedFile.Name) + "." + EXT_SOURCE;
-
-
+                            Path.GetFileNameWithoutExtension(OUTPUT_ABS_DIR + selectedFile.Name) + "." + SOURCE_EXT;
                         using (SudokuGridFile.CreateTextFromBinary(selectedFile,
-                            outputFilePath))
+                                                                   outputFilePath))
+                        {
                             selectedFile.Dispose();
-
+                        }
                         break;
                 }
-
-
+                
                 Console.WriteLine(ConsoleTextBlocks.ShowCharsToLineEnd(Console.CursorLeft));
-
-
-                Console.WriteLine("\n" + "Finished!");
+                Console.WriteLine();
+                Console.WriteLine("Finished!");
                 if (ConsoleInteractions.ShowEscapeQuestion())
+                {
                     break;
+                }
             }
         }
     }

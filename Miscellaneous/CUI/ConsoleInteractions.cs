@@ -9,15 +9,6 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
     /// </summary>
     public static class ConsoleInteractions
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="question"></param>
-        /// <param name="consoleIn"></param>
-        /// <param name="consoleOut"></param>
-        /// <param name="yesChar"></param>
-        /// <param name="noChar"></param>
-        /// <returns></returns>
         public static bool Ask(string question, TextReader consoleIn, TextWriter consoleOut,
             char yesChar = 'y', char noChar = 'n')
         {
@@ -58,14 +49,7 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
                 }
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="options"></param>
-        /// <param name="consoleIn"></param>
-        /// <param name="consoleOut"></param>
-        /// <returns></returns>
+        
         public static int AskMultiple(string[] options, TextReader consoleIn, TextWriter consoleOut)
         {
             if (options == null)
@@ -99,17 +83,7 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             }
             return itemNum - 1;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="dirAbsPath"></param>
-        /// <param name="requestMess"></param>
-        /// <param name="errorMess"></param>
-        /// <param name="forbiddenName"></param>
-        /// <param name="consoleIn"></param>
-        /// <param name="consoleOut"></param>
-        /// <returns></returns>
+        
         public static string RequireChild(string dirAbsPath, string requestMess, string errorMess,
             string forbiddenName, TextReader consoleIn, TextWriter consoleOut)
         {
@@ -141,7 +115,8 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             {
                 consoleOut.Write("{0}: {1}", requestMess, dirAbsPath);
                 string dir = consoleIn.ReadLine();
-                if ((forbiddenName != null) && (dir == forbiddenName))
+                if (forbiddenName != null 
+                    && dir == forbiddenName)
                 {
                     consoleOut.WriteLine("The dir name \"{0}\" is forbidden!", forbiddenName);
                     continue;
@@ -158,14 +133,6 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             }
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="dirAbsPath"></param>
-        /// <param name="ext"></param>
-        /// <param name="consoleIn"></param>
-        /// <param name="consoleOut"></param>
-        /// <returns></returns>
         public static FileStream ShowListAndSelectItem(string dirAbsPath, string ext, TextReader consoleIn, 
             TextWriter consoleOut)
         {
@@ -185,12 +152,12 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             {
                 throw new ArgumentNullException("consoleOut", ConsoleTextMessages.NullArgument);
             }
-            consoleOut.WriteLine("Available items:\n");
+            consoleOut.WriteLine("Available grids:\n");
             var dir = new DirectoryInfo(dirAbsPath);
             FileInfo[] files = dir.GetFiles("*." + ext);
             for (int i = 0; i < files.Length; ++i)
             {
-                consoleOut.WriteLine((i + 1) + ". " + files[i].Name);
+                consoleOut.WriteLine(i + 1 + ". " + files[i].Name);
             }
             int itemNum;
             while(true)
@@ -208,11 +175,7 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             }
             return new FileStream(dirAbsPath + "\\" + files[itemNum - 1].Name, FileMode.Open, FileAccess.Read);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        
         public static bool ShowEscapeQuestion()
         {
             Console.Write("<Enter> to repeat; <Esc> to exit: ");

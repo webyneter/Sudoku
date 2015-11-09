@@ -11,13 +11,6 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
     /// </summary>
     public static class ConsoleTextBlocks
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="topSeparator"></param>
-        /// <param name="bottomSeparator"></param>
-        /// <returns></returns>
         public static string ShowWelcome(string message, char topSeparator = '\\', char bottomSeparator = '/')
         {
             if (message == null)
@@ -60,12 +53,6 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             return sb.ToString();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cursorLeft"></param>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
         public static string ShowCharsToLineEnd(int cursorLeft, char symbol = '*')
         {
             var sb = new StringBuilder();
@@ -75,14 +62,7 @@ namespace Webyneter.Sudoku.Miscellaneous.CUI
             }
             return sb.ToString();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ct"></param>
-        /// <param name="consoleOut"></param>
-        /// <param name="count"></param>
-        /// <param name="msTimeout"></param>
+        
         public static void ShowBlinkingDots(CancellationToken ct, TextWriter consoleOut, byte count = 9, 
             int msTimeout = 10)
         {

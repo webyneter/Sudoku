@@ -19,11 +19,11 @@ namespace Webyneter.Sudoku.Solver
 
         private static readonly string GRID_EXT = SudokuGridFile.Extension; 
         
-        private static readonly string ABS_WORK_DIR = Directory.GetCurrentDirectory();
-        private static readonly string ABS_WORK_DIR_SEPARATED = ABS_WORK_DIR + Path.DirectorySeparatorChar;
+        private static readonly string WORK_ABS_DIR = Directory.GetCurrentDirectory();
+        private static readonly string WORK_ABS_DIR_SEPARATED = WORK_ABS_DIR + Path.DirectorySeparatorChar;
         
-        private static string USER_DIR_INITIALS;
-        private static string USER_ABS_DIR_INITIALS;
+        private static string USER_DIR_AVAILABLE_GRIDS;
+        private static string USER_ABS_DIR_AVAILABLE_GRIDS;
 
         private static string USER_DIR_LOGS;
         private static string USER_ABS_DIR_LOGS;
@@ -37,17 +37,19 @@ namespace Webyneter.Sudoku.Solver
         private static void Main()
         {
             Console.CursorVisible = true;
+
             Console.WriteLine(
-                ConsoleTextBlocks.ShowWelcome("Welcome to Traditional Sudoku Solver console program!") 
+                ConsoleTextBlocks.ShowWelcome("Welcome to Sudoku Solver CUI!") 
                 + "\n");
 
             GetAvailableSudokuGrids();
+
             Console.WriteLine();
              
             while(true)
             {
                 SudokuGrid grid;
-                using (var selectedFile = ConsoleInteractions.ShowListAndSelectItem(USER_ABS_DIR_INITIALS,
+                using (var selectedFile = ConsoleInteractions.ShowListAndSelectItem(USER_ABS_DIR_AVAILABLE_GRIDS,
                     SudokuGridFile.Extension,
                     Console.In,
                     Console.Out))
@@ -110,33 +112,35 @@ namespace Webyneter.Sudoku.Solver
         
         private static void GetAvailableSudokuGrids()
         {
-            string dir;
-
-            for (; ; )
+            while(true)
             {
-                Console.Write("Initials' directory: {0}", ABS_WORK_DIR_SEPARATED);
+                Console.Write("Available grids' directory: {0}", WORK_ABS_DIR_SEPARATED);
                 
-                dir = Console.ReadLine();
-
+                string dir = Console.ReadLine();
                 if (dir == "")
-                    USER_ABS_DIR_INITIALS = ABS_WORK_DIR;
+                {
+                    USER_ABS_DIR_AVAILABLE_GRIDS = WORK_ABS_DIR;
+                }
                 else if (Directory.Exists(dir))
-                    USER_ABS_DIR_INITIALS = ABS_WORK_DIR_SEPARATED + dir;
+                {
+                    USER_ABS_DIR_AVAILABLE_GRIDS = WORK_ABS_DIR_SEPARATED + dir;
+                }
                 else
                 {
-                    Console.Write("\n{0}\n", ConsoleTextMessages.DirectoryNotFound);
+                    Console.WriteLine();
+                    Console.WriteLine(ConsoleTextMessages.DirectoryNotFound);
                     continue;
                 }
 
-                USER_DIR_INITIALS = dir;
+                USER_DIR_AVAILABLE_GRIDS = dir;
 
-
-                if ((new DirectoryInfo(dir)).GetFiles("*." + GRID_EXT).Length == 0)
-                    Console.Write("\nDirectory \"{0}\" contains no .{1} files!\n", dir, GRID_EXT);
+                Console.WriteLine();
+                if (new DirectoryInfo(dir).GetFiles("*." + GRID_EXT).Length == 0)
+                {
+                    Console.WriteLine("Directory \"{0}\" contains no .{1} grid files!", dir, GRID_EXT);
+                }
                 else
                 {
-                    Console.Write("\nInitial configurations found! ");
-                    Console.WriteLine(ConsoleTextBlocks.ShowCharsToLineEnd(Console.CursorLeft));
                     break;
                 }
             }
@@ -150,64 +154,49 @@ namespace Webyneter.Sudoku.Solver
 
                 if (Directory.Exists(dirChecking) &&
                     ConsoleInteractions.Ask(string.Format("Directory \"{0}\" found in {1} - do you want to use it",
-                        dirChecking, ABS_WORK_DIR), Console.In, Console.Out))
+                        dirChecking, WORK_ABS_DIR), Console.In, Console.Out))
                 {
                     mutingVar = dirChecking;
                 }
 
                 if (mutingVar == null)
                 {
-                    mutingVar = ConsoleInteractions.RequireChild(ABS_WORK_DIR,
+                    mutingVar = ConsoleInteractions.RequireChild(WORK_ABS_DIR,
                         "Logs directory",
                         ConsoleTextMessages.DirectoryNotFound,
                         dirChecking,
                         Console.In,
                         Console.Out);
 
-                    Directory.CreateDirectory(ABS_WORK_DIR_SEPARATED + mutingVar);
+                    Directory.CreateDirectory(WORK_ABS_DIR_SEPARATED + mutingVar);
                 }
 
                 return mutingVar;
             };
-
-
-
+            
             if (ConsoleInteractions.Ask("Enable any kinds of logging", Console.In, Console.Out))
             {
                 Console.WriteLine();
-
-                // спросить, нужна ли DEFAULT_DIR_LOGS она для хранения в ней логов:
-                //  нужна -- поиск на диске DEFAULT_DIR_LOGS
-                //      есть на диске -- спросить, использовать ли под логи
-                //          использовать -- USER_ABS_DIR_LOGS = ... + DEFAULT_DIR_LOGS
-                //          не использовать -- потребовать указать пользовательское имя создаваемой папки (проверка на == "logs") и создать
-                //      нет на диске -- потребовать указать пользовательское имя создаваемой папки и создать
-                //  не нужна -- перейти к поиску подпапок
-
-
-                if (USER_DIR_LOGS == null &&
-                    ConsoleInteractions.Ask("Store any kinds of log files in separate directory in " + ABS_WORK_DIR, 
+                if (USER_DIR_LOGS == null 
+                    && ConsoleInteractions.Ask("Store any kinds of log files in separate directory in " + WORK_ABS_DIR, 
                     Console.In, Console.Out))
                 {
                     USER_DIR_LOGS = __decideLogging(DEFAULT_DIR_LOGS);
-                    USER_ABS_DIR_LOGS = ABS_WORK_DIR_SEPARATED + USER_DIR_LOGS;
+                    USER_ABS_DIR_LOGS = WORK_ABS_DIR_SEPARATED + USER_DIR_LOGS;
                     Console.WriteLine();
                 }
-
-                if (USER_DIR_CONSOLE_LOGS == null &&
-                    ConsoleInteractions.Ask("Enable console logging", Console.In, Console.Out))
+                if (USER_DIR_CONSOLE_LOGS == null 
+                    && ConsoleInteractions.Ask("Enable console logging", Console.In, Console.Out))
                 {
                     USER_DIR_CONSOLE_LOGS = __decideLogging(Path.Combine(USER_DIR_LOGS, DEFAULT_DIR_CONSOLE_LOGS));
-                    USER_ABS_DIR_CONSOLE_LOGS = ABS_WORK_DIR_SEPARATED + USER_DIR_CONSOLE_LOGS;
+                    USER_ABS_DIR_CONSOLE_LOGS = WORK_ABS_DIR_SEPARATED + USER_DIR_CONSOLE_LOGS;
                     Console.WriteLine();
                 }
-
-
-                if (USER_DIR_SOLUTION_LOGS == null &&
-                    ConsoleInteractions.Ask("Enable solution logging", Console.In, Console.Out)) 
+                if (USER_DIR_SOLUTION_LOGS == null 
+                    && ConsoleInteractions.Ask("Enable solution logging", Console.In, Console.Out)) 
                 {
                     USER_DIR_SOLUTION_LOGS = __decideLogging(Path.Combine(USER_DIR_LOGS, DEFAULT_DIR_SOLUTION_LOGS));
-                    USER_ABS_DIR_SOLUTION_LOGS = ABS_WORK_DIR_SEPARATED + USER_DIR_SOLUTION_LOGS;
+                    USER_ABS_DIR_SOLUTION_LOGS = WORK_ABS_DIR_SEPARATED + USER_DIR_SOLUTION_LOGS;
                     Console.WriteLine();
                 }
             }
@@ -215,25 +204,26 @@ namespace Webyneter.Sudoku.Solver
         
         private static void ShowSolution(SudokuGrid grid) 
         {
-            Console.WriteLine("Solved InitialGrid:\n");
-
-            byte i, j;
+            Console.WriteLine("Found solution:");
+            Console.WriteLine();
+            
             var sb = new StringBuilder();
 
             char horDelim = '-';
             char vertDelim = '|';
-            string horDelims;
-            string leftOffset;
 
-            for (i = 0; i < 25; ++i)
+            for (byte i = 0; i < 25; ++i)
+            {
                 sb.Append(horDelim);
-            horDelims = sb.ToString();
+            }
+            string horDelims = sb.ToString();
 
             sb.Clear();
-            for (i = 0; i < 2; ++i)
+            for (int i = 0; i < 2; ++i)
+            {
                 sb.Append(" ");
-            leftOffset = sb.ToString();
-
+            }
+            string leftOffset = sb.ToString();
 
             var defaultForeColor = Console.ForegroundColor;
 
@@ -243,25 +233,25 @@ namespace Webyneter.Sudoku.Solver
                 Console.Write(data);
                 Console.ForegroundColor = defaultForeColor;
             };
-
-
+            
             writeColoredDelim(leftOffset + horDelims + "\n");
 
-            for (i = 0; i < grid.Metrics.MaximumNumber; ++i)
+            for (byte i = 0; i < grid.Metrics.MaximumNumber; ++i)
             {
                 writeColoredDelim(leftOffset + vertDelim);
-
-                for (j = 0; j < grid.Metrics.MaximumNumber; ++j)
+                for (byte j = 0; j < grid.Metrics.MaximumNumber; ++j)
                 {
                     Console.Write(" " + grid[i, j]);
-
                     if ((j + 1) % 3 == 0)
+                    {
                         writeColoredDelim(" " + vertDelim);
+                    }
                 }
                 Console.WriteLine();
-
                 if ((i + 1) % 3 == 0)
+                {
                     writeColoredDelim(leftOffset + horDelims + "\n");
+                }
             }
 
             Console.WriteLine();
