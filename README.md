@@ -1,6 +1,8 @@
 # Sudoku
 [Sudoku](https://en.wikipedia.org/wiki/Sudoku) puzzles solver.
 
+<img alt="Sudoku Solver (CUI) in action" src="[screenshots]/solver.jpg" width="400" align="center">
+
 To get started with demo:
 
 1. Build and run 'Sudoku Solver.exe': welcome message and input request for puzzles-to-solve folder name (relative to the current executable's location) will be displayed.
