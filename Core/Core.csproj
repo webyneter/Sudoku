@@ -88,7 +88,7 @@
     <Compile Include="Grids\SudokuGrid16x4.cs" />
     <Compile Include="Grids\SudokuGrid25x5.cs" />
     <Compile Include="Grids\SudokuGridCellConstraints.cs" />
-    <Compile Include="Miscs\SudokuFile.cs" />
+    <Compile Include="Miscs\SudokuGridFile.cs" />
     <Compile Include="Solving\SudokuSolvingTechnique.cs" />
     <Compile Include="Solving\SudokuSolvingIterationAssumptionTechnique.cs" />
   </ItemGroup>

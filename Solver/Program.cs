@@ -17,7 +17,7 @@ namespace Webyneter.Sudoku.Solver
         private const string DEFAULT_DIR_CONSOLE_LOGS = "console";
         private const string DEFAULT_DIR_SOLUTION_LOGS = "solution";
 
-        private static readonly string GRID_EXT = SudokuFile.Extension; 
+        private static readonly string GRID_EXT = SudokuGridFile.Extension; 
         
         private static readonly string ABS_WORK_DIR = Directory.GetCurrentDirectory();
         private static readonly string ABS_WORK_DIR_SEPARATED = ABS_WORK_DIR + Path.DirectorySeparatorChar;
@@ -48,7 +48,7 @@ namespace Webyneter.Sudoku.Solver
             {
                 SudokuGrid grid;
                 using (var selectedFile = ConsoleInteractions.ShowListAndSelectItem(USER_ABS_DIR_INITIALS,
-                    SudokuFile.Extension,
+                    SudokuGridFile.Extension,
                     Console.In,
                     Console.Out))
                 {

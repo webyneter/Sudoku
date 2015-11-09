@@ -11,7 +11,7 @@ namespace Webyneter.Sudoku.FileConverter
     internal static class Program
     {
         private static string EXT_SOURCE = "txt";
-        private static string EXT_CONVERTED = SudokuFile.Extension;
+        private static string EXT_CONVERTED = SudokuGridFile.Extension;
 
         private static string ABS_WORK_DIR = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
 
@@ -64,7 +64,7 @@ namespace Webyneter.Sudoku.FileConverter
                             Path.GetFileNameWithoutExtension(OUTPUT_ABS_DIR + selectedFile.Name) + "." + EXT_CONVERTED;
 
 
-                        using (SudokuFile.CreateBinaryFromText(selectedFile,
+                        using (SudokuGridFile.CreateBinaryFromText(selectedFile,
                             outputFilePath,
                             SudokuConvertionAlgorithm.NonUniform))
                             selectedFile.Dispose();
@@ -83,7 +83,7 @@ namespace Webyneter.Sudoku.FileConverter
                             Path.GetFileNameWithoutExtension(OUTPUT_ABS_DIR + selectedFile.Name) + "." + EXT_SOURCE;
 
 
-                        using (SudokuFile.CreateTextFromBinary(selectedFile,
+                        using (SudokuGridFile.CreateTextFromBinary(selectedFile,
                             outputFilePath))
                             selectedFile.Dispose();
 

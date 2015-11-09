@@ -9,7 +9,7 @@ namespace Webyneter.Sudoku.Core.Miscs
     /// <summary>
     /// Provides static methods for sudoku files I/O.
     /// </summary>
-    public static class SudokuFile
+    public static class SudokuGridFile
     {
         // WI: move the definition to outer scope (db-like storage, etc.)
         /// <summary>
