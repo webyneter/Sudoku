@@ -1,7 +1,7 @@
 # Sudoku
 [Sudoku](https://en.wikipedia.org/wiki/Sudoku) puzzles solver.
 
-<img alt="Sudoku Solver (CUI) in action" src="[screenshots]/solver.jpg" width="400" align="center">
+<img alt="Sudoku Solver (CUI) in action" src="[screenshots]/solver.jpg" width="350" align="center">
 
 To get started with demo:
 
