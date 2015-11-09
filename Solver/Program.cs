@@ -39,7 +39,7 @@ namespace Webyneter.Sudoku.Solver
             Console.CursorVisible = true;
 
             Console.WriteLine(
-                ConsoleTextBlocks.ShowWelcome("Welcome to Sudoku Solver CUI!") 
+                ConsoleTextBlocks.ShowWelcome("Welcome to Sudoku Solver!") 
                 + "\n");
 
             GetAvailableSudokuGrids();
