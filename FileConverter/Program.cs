@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 using Webyneter.Sudoku.Core.Conversion;
 using Webyneter.Sudoku.Core.Miscs;
@@ -20,6 +21,8 @@ namespace Webyneter.Sudoku.FileConverter
         
         private static void Main()
         {
+            Console.Title = Assembly.GetExecutingAssembly().GetName().Name;
+
             Console.CursorVisible = true;
 
             Console.WriteLine(ConsoleTextBlocks.ShowWelcome("Welcome to Sudoku Grid Files Converter!"));

@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Webyneter.Sudoku.FileConverter</RootNamespace>
-    <AssemblyName>Webyneter.Sudoku.FileConverter</AssemblyName>
+    <AssemblyName>Sudoku Grid Files Converter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
