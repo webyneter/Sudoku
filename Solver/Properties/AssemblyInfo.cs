@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sudoku")]
-[assembly: AssemblyCopyright("Copyright © Webyneter (Shupeyko N. P.) 2015")]
+[assembly: AssemblyProduct("Webyneter.Sudoku.Solver")]
+[assembly: AssemblyCopyright("Copyright © Webyneter 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

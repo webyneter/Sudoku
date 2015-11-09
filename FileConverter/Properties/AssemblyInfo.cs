@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("FileConverter")]
+[assembly: AssemblyTitle("Sudoku File Converter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Sudoku Configurations Converter")]
+[assembly: AssemblyProduct("Webyneter.Sudoku.FileConverter")]
 [assembly: AssemblyCopyright("Copyright © Webyneter (Shupeyko N. P.) 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

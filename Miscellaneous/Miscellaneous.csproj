@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Webyneter.Sudoku.Miscellaneous</RootNamespace>
-    <AssemblyName>Miscellaneous</AssemblyName>
+    <AssemblyName>Webyneter.Sudoku.Miscellaneous</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
