@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -36,6 +37,8 @@ namespace Webyneter.Sudoku.Solver
 
         private static void Main()
         {
+            Console.Title = Assembly.GetExecutingAssembly().GetName().Name;
+
             Console.CursorVisible = true;
 
             Console.WriteLine(ConsoleTextBlocks.ShowWelcome("Welcome to Sudoku Solver!"));
