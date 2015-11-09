@@ -13,26 +13,15 @@ namespace Webyneter.Sudoku.Solver
 {
     internal static class Program
     {
-        private struct TaskMethodArgs
-        {
-            public readonly Task Task;
-            public readonly CancellationTokenSource CTS;
-            public TaskMethodArgs(Task task, CancellationTokenSource cts) 
-            {
-                Task = task;
-                CTS = cts;
-            }
-        }
-
-        private static string EXT_INITIALS = SudokuFile.Extension; 
-        
-        private static string ABS_WORK_DIR = Directory.GetCurrentDirectory();
-        private static string ABS_WORK_DIR_SEPARATED = ABS_WORK_DIR + Path.DirectorySeparatorChar;
-
         private const string DEFAULT_DIR_LOGS = "logs";
         private const string DEFAULT_DIR_CONSOLE_LOGS = "console";
         private const string DEFAULT_DIR_SOLUTION_LOGS = "solution";
 
+        private static readonly string GRID_EXT = SudokuFile.Extension; 
+        
+        private static readonly string ABS_WORK_DIR = Directory.GetCurrentDirectory();
+        private static readonly string ABS_WORK_DIR_SEPARATED = ABS_WORK_DIR + Path.DirectorySeparatorChar;
+        
         private static string USER_DIR_INITIALS;
         private static string USER_ABS_DIR_INITIALS;
 
@@ -45,41 +34,20 @@ namespace Webyneter.Sudoku.Solver
         private static string USER_DIR_SOLUTION_LOGS;
         private static string USER_ABS_DIR_SOLUTION_LOGS;
 
-
         private static void Main()
         {
             Console.CursorVisible = true;
-
             Console.WriteLine(
                 ConsoleTextBlocks.ShowWelcome("Welcome to Traditional Sudoku Solver console program!") 
                 + "\n");
 
-
-            _getInitialSudokuConfigurations();
+            GetAvailableSudokuGrids();
             Console.WriteLine();
-            
-            /*
-            _decideLogging();
-            Console.WriteLine();
-            Console.Write(ConsoleTextBlocks.ShowCharsToLineEnd(Console.CursorLeft) + "\n\n");
-            */
-
              
-            FileStream selectedFile;
-            SudokuGrid grid;
-
-            Task<bool> checkingCorrectnessTask;
-            Task<bool> solvingTask;
-            CancellationTokenSource dottingTaskCTS;
-            Task dottingTask;
-            //Task progressBarTask;
-            Task outputTask;
-            Task<bool> escapeTask;
-
-            
             while(true)
             {
-                using (selectedFile = ConsoleInteractions.ShowListAndSelectItem(USER_ABS_DIR_INITIALS,
+                SudokuGrid grid;
+                using (var selectedFile = ConsoleInteractions.ShowListAndSelectItem(USER_ABS_DIR_INITIALS,
                     SudokuFile.Extension,
                     Console.In,
                     Console.Out))
@@ -88,34 +56,26 @@ namespace Webyneter.Sudoku.Solver
                 }
                 
                 Console.WriteLine();
-
-
-                checkingCorrectnessTask = new Task<bool>(grid.CheckCorrectness);
                 
-                solvingTask = new Task<bool>(() =>
+                var solvingTask = new Task<bool>(() =>
                 {
                     var gridSolver = new SudokuSolvingIterationAssumptionTechnique(grid);
                     gridSolver.Solve();
-                    Console.WriteLine(gridSolver.Grid.CheckCorrectness());
                     gridSolver.ApplySolutionToGrid();
                     return gridSolver.SolutionExists;
                 });
-
-                dottingTaskCTS = new CancellationTokenSource();
-                dottingTask = new Task(() => ConsoleTextBlocks.ShowBlinkingDots(dottingTaskCTS.Token, Console.Out));
-
-                //progressBarTask = new Task(() => _showSolutionProgressBarOf(InitialGrid));
-                outputTask = new Task(() => _showSolutionOf(grid));
-                escapeTask = new Task<bool>(ConsoleInteractions.ShowEscapeQuestion);
-
-                //progressBarTask.ContinueWith((fin) => outputTask.Start(), TaskContinuationOptions.OnlyOnRanToCompletion);
-                //solutionTask.ContinueWith((fin) => outputTask.Start(), TaskContinuationOptions.OnlyOnRanToCompletion);
-
+                var dottingTaskCTS = new CancellationTokenSource();
+                var dottingTask = new Task(() => ConsoleTextBlocks.ShowBlinkingDots(dottingTaskCTS.Token, Console.Out));
+                var outputTask = new Task(() => ShowSolution(grid));
+                var escapeTask = new Task<bool>(ConsoleInteractions.ShowEscapeQuestion);
+                var checkingCorrectnessTask = new Task<bool>(grid.CheckCorrectness);
 
                 checkingCorrectnessTask.ContinueWith((fin) => 
                 {
                     if (fin.Result)
+                    {
                         solvingTask.Start();
+                    }
                     else
                     {
                         Console.WriteLine(ConsoleTextMessages.IncorrectInitialConfiguration + "\n");
@@ -126,7 +86,9 @@ namespace Webyneter.Sudoku.Solver
                 dottingTask.ContinueWith((fin) => 
                 {
                     if (solvingTask.Result)
+                    {
                         outputTask.Start();
+                    }
                     else
                     {
                         Console.WriteLine(ConsoleTextMessages.IncorrectInitialConfiguration + "\n");
@@ -135,20 +97,18 @@ namespace Webyneter.Sudoku.Solver
                 }, TaskContinuationOptions.OnlyOnRanToCompletion);
                 outputTask.ContinueWith((fin) => escapeTask.Start(), TaskContinuationOptions.OnlyOnRanToCompletion);
                 
-
                 dottingTask.Start();
                 checkingCorrectnessTask.Start();
 
-
                 escapeTask.Wait();
-
                 if (escapeTask.Result)
+                {
                     break;
+                }
             }
         }
-
-
-        private static void _getInitialSudokuConfigurations()
+        
+        private static void GetAvailableSudokuGrids()
         {
             string dir;
 
@@ -171,8 +131,8 @@ namespace Webyneter.Sudoku.Solver
                 USER_DIR_INITIALS = dir;
 
 
-                if ((new DirectoryInfo(dir)).GetFiles("*." + EXT_INITIALS).Length == 0)
-                    Console.Write("\nDirectory \"{0}\" contains no .{1} files!\n", dir, EXT_INITIALS);
+                if ((new DirectoryInfo(dir)).GetFiles("*." + GRID_EXT).Length == 0)
+                    Console.Write("\nDirectory \"{0}\" contains no .{1} files!\n", dir, GRID_EXT);
                 else
                 {
                     Console.Write("\nInitial configurations found! ");
@@ -182,8 +142,7 @@ namespace Webyneter.Sudoku.Solver
             }
         }
 
-
-        private static void _decideLogging()
+        private static void DecideLogging()
         {
             Func<string, string> __decideLogging = (dirChecking) => 
             {
@@ -253,9 +212,8 @@ namespace Webyneter.Sudoku.Solver
                 }
             }
         }
-
-
-        private static void _showSolutionOf(SudokuGrid grid) 
+        
+        private static void ShowSolution(SudokuGrid grid) 
         {
             Console.WriteLine("Solved InitialGrid:\n");
 
