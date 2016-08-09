@@ -16,6 +16,4 @@ To get started with demo:
 - Solving classic 9x9 puzzles using my own method: I call it 'Iteration-Assumption Method' which is essentially a combination of well-known techniques, such as One Rule-driven cell candidates decrease, and uncertainty resolution by means of cell candidate assumption (see [implementation](Core/Solving/SudokuSolvingIterationAssumptionTechnique.cs) for more details).
 - Compressing a classic 9x9 puzzle into an optimized binary file (one with a '.tradsud' extension) half the size of the original textual version (vice-versa in case of decompression) and beyond (see [implementation](Core/Conversion/SudokuConverter.cs) for more details).
 
-The application is being *actively developed* (take a look at the list of [milestones](https://github.com/webyneter/Sudoku/milestones) and related [issues](https://github.com/webyneter/Sudoku/issues?q=is%3Aissue+is%3Aopen)).
-
 Generally, my major goal is to create a fully-functional *online tournament platform* allowing for self-placed/guided puzzle solving training, peer-to-peer/team-to-team competition with support for leaderboards, player proficiency estimation, etc.
